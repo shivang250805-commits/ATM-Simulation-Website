@@ -1,0 +1,46 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1d3557, #457b9d);
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.atm-container {
+  background-color: #264653;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px black;
+  width: 300px;
+  text-align: center;
+}
+
+button {
+  background: #2a9d8f;
+  border: none;
+  padding: 10px 20px;
+  margin: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #21867a;
+}
+
+input {
+  padding: 10px;
+  width: 80%;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.hidden {
+  display: none;
+}
