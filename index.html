@@ -3,25 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ATM Simulation</title>
+  <title>ATM Smart WebApp</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="atm-container">
-    <h1>💳 ATM Simulation</h1>
-    
-    <div id="screen">
-      <p id="message">Enter your PIN to begin</p>
-      <input type="password" id="pin" placeholder="Enter PIN" />
-      <button onclick="checkPin()">Enter</button>
+    <h1 class="logo">💳 Smart ATM</h1>
+
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen">
+      <p>Enter your 4-digit PIN</p>
+      <input type="password" id="pin" maxlength="4" placeholder="****" />
+      <button onclick="login()">Login</button>
+      <p id="login-msg"></p>
     </div>
 
-    <div id="menu" class="hidden">
-      <h2>Welcome!</h2>
-      <button onclick="checkBalance()">Check Balance</button>
-      <button onclick="withdraw()">Withdraw</button>
-      <button onclick="deposit()">Deposit</button>
-      <button onclick="exitATM()">Exit</button>
+    <!-- MAIN MENU -->
+    <div id="menu-screen" class="hidden">
+      <h2>Welcome, User</h2>
+      <div class="btn-group">
+        <button onclick="showBalance()">Check Balance</button>
+        <button onclick="deposit()">Deposit</button>
+        <button onclick="withdraw()">Withdraw</button>
+        <button onclick="viewHistory()">Transaction History</button>
+        <button class="exit" onclick="logout()">Exit</button>
+      </div>
       <p id="output"></p>
     </div>
   </div>
