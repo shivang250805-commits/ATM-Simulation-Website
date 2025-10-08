@@ -1,46 +1,76 @@
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #1d3557, #457b9d);
-  color: white;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #1b263b, #0d1b2a);
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #f1faee;
+  margin: 0;
 }
 
 .atm-container {
-  background-color: #264653;
-  padding: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
   border-radius: 15px;
-  box-shadow: 0 0 10px black;
-  width: 300px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+  width: 350px;
   text-align: center;
+  backdrop-filter: blur(8px);
+  transition: 0.3s;
+}
+
+.logo {
+  color: #a8dadc;
+  margin-bottom: 15px;
+}
+
+input {
+  width: 70%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 18px;
 }
 
 button {
-  background: #2a9d8f;
+  background: #457b9d;
   border: none;
+  color: white;
   padding: 10px 20px;
   margin: 8px;
   border-radius: 8px;
   cursor: pointer;
-  color: white;
-  transition: 0.3s;
+  font-size: 15px;
+  transition: all 0.3s;
 }
 
 button:hover {
-  background: #21867a;
+  background: #1d3557;
 }
 
-input {
-  padding: 10px;
-  width: 80%;
-  border: none;
-  border-radius: 8px;
-  text-align: center;
-  margin-top: 10px;
+.exit {
+  background: #e63946;
+}
+
+.exit:hover {
+  background: #b5171e;
 }
 
 .hidden {
   display: none;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+}
+
+#output {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #f1faee;
+  min-height: 40px;
 }
