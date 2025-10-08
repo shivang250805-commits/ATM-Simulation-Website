@@ -1,41 +1,71 @@
-let balance = 5000;
+let balance = 10000;
 const correctPin = "1234";
+let transactionHistory = [];
 
-function checkPin() {
-  const pinInput = document.getElementById("pin").value;
-  if (pinInput === correctPin) {
-    document.getElementById("screen").classList.add("hidden");
-    document.getElementById("menu").classList.remove("hidden");
+function login() {
+  const pin = document.getElementById("pin").value;
+  const loginMsg = document.getElementById("login-msg");
+
+  if (pin === correctPin) {
+    document.getElementById("login-screen").classList.add("hidden");
+    document.getElementById("menu-screen").classList.remove("hidden");
   } else {
-    document.getElementById("message").textContent = "❌ Wrong PIN! Try again.";
+    loginMsg.textContent = "❌ Incorrect PIN! Try again.";
+    loginMsg.style.color = "#ff6b6b";
   }
 }
 
-function checkBalance() {
-  document.getElementById("output").textContent = `Your balance is ₹${balance}`;
-}
-
-function withdraw() {
-  const amount = prompt("Enter amount to withdraw:");
-  if (amount && amount > 0 && amount <= balance) {
-    balance -= amount;
-    alert(`₹${amount} withdrawn successfully!`);
-  } else {
-    alert("Invalid amount or insufficient balance!");
-  }
+function showBalance() {
+  document.getElementById("output").textContent = `💰 Current Balance: ₹${balance}`;
 }
 
 function deposit() {
   const amount = prompt("Enter amount to deposit:");
-  if (amount && amount > 0) {
-    balance += parseFloat(amount);
-    alert(`₹${amount} deposited successfully!`);
-  } else {
-    alert("Invalid deposit amount!");
+  if (!amount || isNaN(amount) || amount <= 0) {
+    alert("⚠️ Please enter a valid amount!");
+    return;
   }
+
+  balance += parseFloat(amount);
+  transactionHistory.push(`+ ₹${amount} deposited`);
+  alert(`✅ ₹${amount} deposited successfully!`);
+  showBalance();
 }
 
-function exitATM() {
-  alert("Thank you for using the ATM!");
+function withdraw() {
+  const amount = prompt("Enter amount to withdraw:");
+  if (!amount || isNaN(amount) || amount <= 0) {
+    alert("⚠️ Please enter a valid amount!");
+    return;
+  }
+
+  if (amount > balance) {
+    alert("❌ Insufficient funds!");
+  } else {
+    balance -= parseFloat(amount);
+    transactionHistory.push(`- ₹${amount} withdrawn`);
+    alert(`✅ ₹${amount} withdrawn successfully!`);
+  }
+
+  showBalance();
+}
+
+function viewHistory() {
+  if (transactionHistory.length === 0) {
+    document.getElementById("output").textContent = "No transactions yet.";
+    return;
+  }
+
+  const historyText = transactionHistory
+    .slice(-5)
+    .reverse()
+    .map((t, i) => `${i + 1}. ${t}`)
+    .join("\n");
+
+  alert("📜 Recent Transactions:\n\n" + historyText);
+}
+
+function logout() {
+  alert("👋 Thank you for using Smart ATM!");
   location.reload();
 }
